@@ -39,4 +39,18 @@ public class Application {
         };
     }
     //
+    //
+    @Bean
+    CommandLineRunner commandLineRunner3(StudentRepository studentRepository){
+        return   args -> {
+            Student omar = new Student(
+                    "omar",
+                    "Rabeh",
+                    "omar@gmail.com",
+                    1
+            );
+            studentRepository.save(omar);
+        };
+    }
+    //
 }
