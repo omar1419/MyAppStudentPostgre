@@ -3,6 +3,8 @@ package com.example.demo;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name="Student")
@@ -117,5 +119,19 @@ public class Student {
                 ", email='" + email + '\'' +
                 ", age='" + age + '\'' +
                 '}';
+    }
+    //Second commit
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return Objects.equals(getId(), student.getId()) && Objects.equals(getFirstName(), student.getFirstName()) && Objects.equals(getLastName(), student.getLastName()) && Objects.equals(getEmail(), student.getEmail()) && Objects.equals(getAge(), student.getAge());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getAge());
     }
 }
